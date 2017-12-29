@@ -1,6 +1,6 @@
-import React from 'react';
-import Spinner from 'react-spinkit';
-import {addToMyMovies} from '../actions';
+import React from "react";
+import Spinner from "react-spinkit";
+import { addToMyMovies } from "../actions";
 
 export default class Home extends React.Component {
   addToMyMovies(event, movie) {
@@ -15,14 +15,13 @@ export default class Home extends React.Component {
           <img src={movie.full_backdrop_path} alt="" />
         </div>
         <div className="featured-content">
-          <h2 className="featured-title">
-            {movie.title}
-          </h2>
-          <p className="featured-description">
-            {movie.overview}
-          </p>
-          <button className="button" type="button"
-            onClick={event => this.addToMyMovies(event, movie)}>
+          <h2 className="featured-title">{movie.title}</h2>
+          <p className="featured-description">{movie.overview}</p>
+          <button
+            className="button"
+            type="button"
+            onClick={event => this.addToMyMovies(event, movie)}
+          >
             Add to My Movies
           </button>
         </div>
@@ -33,9 +32,17 @@ export default class Home extends React.Component {
   renderGrid() {
     const movies = this.props.movies.map((movie, index) => (
       <li className="movie-grid-item" key={index}>
-        <button className="movie" type="button" data-text="Add to My Movies"
-          onClick={event => this.addToMyMovies(event, movie)}>
-          <img className="movie-poster" src={movie.full_poster_path} alt={movie.title} />
+        <button
+          className="movie"
+          type="button"
+          data-text="Add to My Movies"
+          onClick={event => this.addToMyMovies(event, movie)}
+        >
+          <img
+            className="movie-poster"
+            src={movie.full_poster_path}
+            alt={movie.title}
+          />
         </button>
       </li>
     ));
@@ -46,18 +53,36 @@ export default class Home extends React.Component {
   render(props) {
     // Loading
     if (this.props.loading) {
-      return <div className="wrapper center"><Spinner spinnerName="circle" noFadeIn /></div>;
+      return (
+        <div className="wrapper center">
+          <Spinner spinnerName="circle" noFadeIn />
+        </div>
+      );
     }
     // Error
     if (this.props.error) {
-      return <div className="wrapper center"><strong>{this.props.error}</strong></div>;
+      return (
+        <div className="wrapper center">
+          <strong>{this.props.error}</strong>
+        </div>
+      );
+    }
+
+    if (this.props.movies) {
+      this.props.movies.sort((a, b) => a.release_date < b.release_date);
     }
     // Success
     return (
       <div className="MovieGrid">
-        {this.renderFeatured(this.props.featuredTop)}
-        <div className="wrapper">{this.renderGrid()}</div>
-        {this.renderFeatured(this.props.featuredBottom)}
+        {this.props.featuredTop
+          ? this.renderFeatured(this.props.featuredTop)
+          : null}
+        {this.props.movies ? (
+          <div className="wrapper">{this.renderGrid()}</div>
+        ) : null}
+        {this.props.featuredBottom
+          ? this.renderFeatured(this.props.featuredBottom)
+          : null}
       </div>
     );
   }
