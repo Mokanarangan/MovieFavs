@@ -1,0 +1,285 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 110%;
+  line-height: 1.3;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+.wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+
+
+.header {
+  border-top: 1em solid #000;
+}
+
+.header-login {
+  float: right;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+}
+
+/*.header-login > * {
+  display: inline-block;
+  vertical-align: middle;
+}*/
+
+
+
+.logo-wrapper {
+  text-align: center;
+  clear: both;
+}
+
+.logo {
+  display: inline-block;
+  width: 60%;
+  max-width: 300px;
+  margin-bottom: 1em;
+}
+
+.logo-image {
+  display: block;
+  width: 100%;
+  height: 0;
+  margin: 0 auto;
+  padding: 0 0 22.222%;
+  background-image: url('./images/logo.png');
+  background-size: cover;
+  background-position: center;
+  text-indent: 120%;
+  overflow: hidden;
+}
+
+
+
+.nav {
+  margin-top: 1em;
+}
+
+.nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.nav-item {
+}
+
+.nav-link {
+  padding: 0.5em;
+}
+.nav-link.active {
+  text-decoration: underline;
+}
+
+
+
+.featured {
+  display: grid;
+  position: relative;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 2em;
+  padding: 0 2em;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.featured-image {
+}
+
+.featured-image > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.featured-content {
+  position: relative;
+  margin-right: -2em;
+  padding: 2em;
+  padding-top: 3em;
+  padding-bottom: 4em;
+  z-index: 0;
+}
+
+.featured-content::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(150% + 2em);
+  height: 100%;
+  background: -webkit-gradient(linear, right top, left top, color-stop(50%, rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(to left, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  content: '';
+  z-index: -1;
+}
+
+.featured-title {
+  margin-top: 0;
+}
+
+.featured-description {
+}
+
+
+
+.button {
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  border: 1px solid #fff;
+  background: none;
+  color: inherit;
+  appearance: none;
+  font-size: 1em;
+}
+.button:hover {
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+}
+
+
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 2em;
+  margin: 0 auto 4em;
+  padding: 2em;
+}
+
+.movie-grid-item {
+  background: #000;
+}
+
+.movie {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0 0 150%;
+  overflow: hidden;
+}
+button.movie {
+  border: 0;
+  background: none;
+  appearance: none;
+}
+button.movie::after {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  content: attr(data-text);
+}
+
+.movie-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie:hover::after {
+  opacity: 1;
+}
+.movie:hover > .movie-poster {
+  opacity: 0.6;
+}
+
+
+
+.center {
+  text-align: center;
+}
+.wrapper.center {
+  padding: 2em 1em;
+}
+.center > .sk-spinner {
+  margin: 0 auto;
+}
+main > div > h1 {
+  margin-top: 2em;
+}
+
+button {
+  margin: auto;
+  font-size: 16px;
+  margin-top: 15px;
+  /* margin-left: 50%; */
+}
+
+.form-wrapper {
+  max-width: 22em;
+  margin: 0 auto;
+  padding: 0 1em 2em;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 1em;
+}
+
+.form-row {
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-input {
+}
+
+.form-caption {
+  margin-top: 2em;
+}
